@@ -1,61 +1,61 @@
-//books.js   Ming Jie Wang   301188372   route section
+//survey.js   Ming Jie Wang   301188372   route section
 // modules required for routing
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-// define the book model
-let book = require('../models/books');
+// define the survey model
+let survey = require('../models/survey');
 
-/* GET books List page. READ */
+/* GET survey List page. READ */
 router.get('/', (req, res, next) => {
-  // find all books in the books collection
-  book.find( (err, books) => {
+  // find all survey in the survey collection
+  survey.find( (err, survey) => {
     if (err) {
       return console.error(err);
     }
     else {
-      res.render('books/index', {
-        title: 'Books',
-        books: books
+      res.render('survey/index', {
+        title: 'Survey',
+        survey: survey
       });
     }
   });
 
 });
 
-//  GET the Book Details page in order to add a new Book
+//  GET the Survey Details page in order to add a new Survey
 router.get('/add', (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
     //direct user to add page
-     res.render('books/details', {
-      title: 'Add a Book',
-      books: ''
+     res.render('survey/details', {
+      title: 'Add a Survey',
+      survey: ''
     });
 });
 
-// POST process the Book Details page and create a new Book - CREATE
+// POST process the Survey Details page and create a new Survey - CREATE
 router.post('/add', (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
     //create object with info
-    let newBooks = book({
+    let newSurvey = survey({
       "Title": req.body.title,
       "Description": req.body.description,
       "Price": req.body.price,
       "Author": req.body.author,
       "Genre": req.body.genre
     });
-    book.create(newBooks, (err, book) =>{res.redirect('/books');});
+    survey.create(newSurvey, (err, survey) =>{res.redirect('/survey');});
 });
 
-// GET the Book Details page in order to edit an existing Book
-router.get('/edit/:id', (req, res, next) => {
+// GET the Survey Details page in order to update an existing Survey
+router.get('/update/:id', (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
@@ -63,15 +63,15 @@ router.get('/edit/:id', (req, res, next) => {
     //get id
     let id = req.params.id;
     //search info by id
-    book.findById(id, (err, bookToEdit) => {
-      res.render('books/details', {title: 'Edit Contact', books: bookToEdit});
+    survey.findById(id, (err, surveyToupdate) => {
+      res.render('survey/details', {title: 'Update Survey', survey: surveyToupdate});
   });
 });
 
 
 
 // POST - process the information passed from the details form and update the document
-router.post('/edit/:id', (req, res, next) => {
+router.post('/update/:id', (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
@@ -80,7 +80,7 @@ router.post('/edit/:id', (req, res, next) => {
      let id = req.params.id
     
      //create object with update object
-     let updatedBooks = book({
+     let updatedSurvey = survey({
       "_id": id,
       "Title": req.body.title,
       "Description": req.body.description,
@@ -90,8 +90,8 @@ router.post('/edit/:id', (req, res, next) => {
     });
     
     //update object
-     book.updateOne({_id: id}, updatedBooks, (err) => {
-          res.redirect('/books');
+     survey.updateOne({_id: id}, updatedSurvey, (err) => {
+          res.redirect('/survey');
      });
 });
 
@@ -104,8 +104,8 @@ router.get('/delete/:id', (req, res, next) => {
     //get id
     let id = req.params.id;
 
-    //remove book by id
-    book.remove({_id: id}, (err) => {res.redirect('/books');});
+    //remove survey by id
+    survey.remove({_id: id}, (err) => {res.redirect('/survey');});
 });
 
 

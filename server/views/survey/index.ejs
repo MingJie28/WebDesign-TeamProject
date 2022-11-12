@@ -1,15 +1,15 @@
-<!--index.ejs   Ming Jie Wang   301188372   book list page-->
+<!--index.ejs   Ming Jie Wang   301188372   survey list page-->
 <%- include('../partials/header.ejs'); %>
 
     <!-- MAIN CONTENT -->
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <h3>Favourite Books List </h3>
+          <h3>Survey List </h3>
           <!-- ------------------------ -->
           <!-- FIX THE ADD BUTTON BELOW -->
           <!-- ------------------------ -->
-          <a href="/books/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a book</a>
+          <a href="/survey/add" class="btn btn-primary"><i class="fa fa-plus"></i> Create a survey</a>
           <br>
           <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
@@ -25,26 +25,22 @@
                 </thead>
                 <tbody>
                 <!-- Template Row -->
-                <% for (let count = 0; count < books.length; count++) { %>
+                <% for (let count = 0; count < survey.length; count++) { %>
                 <tr>
-                  <td><%= books[count].Title %></td>
-                  <td class="text-center">$<%= books[count].Price %></td>
-                  <td class="text-center"><%= books[count].Author %></td>
-                  <td class="text-center"><%= books[count].Genre %></td>
+                  <td><%= survey[count].Title %></td>
+                  <td class="text-center">$<%= survey[count].Price %></td>
+                  <td class="text-center"><%= survey[count].Author %></td>
+                  <td class="text-center"><%= survey[count].Genre %></td>
 
                   <td class="text-center">
-                    <!-- ------------------------ -->
-                    <!-- ADD the EDIT BUTTON HERE -->
-                    <!-- ------------------------ -->
-                    <a href="/books/edit/<%= books[count]._id %>" class="btn btn-primary btn-sm">
-                    <i class="fas fa-pencil-alt"></i> Edit</a>
+                  <!-- update button -->
+                    <a href="/survey/update/<%= survey[count]._id %>" class="btn btn-primary btn-sm">
+                    <i class="fas fa-pencil-alt"></i> Update</a>
                   </td>
 
                   <td class="text-center">
-                    <!-- ------------------------ -->
-                    <!-- ADD the DELETE BUTTON HERE -->
-                    <!-- ------------------------ -->
-                    <a href="/books/delete/<%= books[count]._id %>" class="btn btn-danger btn-sm">
+                    <!-- delete button -->
+                    <a href="/survey/delete/<%= survey[count]._id %>" class="btn btn-danger btn-sm">
                     <i class="fas fa-trash-alt"></i> Delete</a>
                   </td>
                 </tr>
