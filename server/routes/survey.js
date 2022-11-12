@@ -1,4 +1,3 @@
-//survey.js   Ming Jie Wang   301188372   route section
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -24,30 +23,23 @@ router.get('/', (req, res, next) => {
 
 });
 
-//  GET the Survey Details page in order to add a new Survey
-router.get('/add', (req, res, next) => {
+//  GET the Survey Details page in order to create a new Survey
+router.get('/create', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
-    //direct user to add page
+    //direct user to create page
      res.render('survey/details', {
-      title: 'Add a Survey',
+      title: 'Create a Survey',
       survey: ''
     });
 });
 
 // POST process the Survey Details page and create a new Survey - CREATE
-router.post('/add', (req, res, next) => {
+router.post('/create', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     //create object with info
     let newSurvey = survey({
       "Title": req.body.title,
       "Description": req.body.description,
-      "Price": req.body.price,
       "Author": req.body.author,
       "Genre": req.body.genre
     });
@@ -57,9 +49,6 @@ router.post('/add', (req, res, next) => {
 // GET the Survey Details page in order to update an existing Survey
 router.get('/update/:id', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     //get id
     let id = req.params.id;
     //search info by id
@@ -73,9 +62,6 @@ router.get('/update/:id', (req, res, next) => {
 // POST - process the information passed from the details form and update the document
 router.post('/update/:id', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     //get id
      let id = req.params.id
     
@@ -84,7 +70,6 @@ router.post('/update/:id', (req, res, next) => {
       "_id": id,
       "Title": req.body.title,
       "Description": req.body.description,
-      "Price": req.body.price,
       "Author": req.body.author,
       "Genre": req.body.genre
     });
@@ -97,15 +82,35 @@ router.post('/update/:id', (req, res, next) => {
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
-
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     //get id
     let id = req.params.id;
 
     //remove survey by id
     survey.remove({_id: id}, (err) => {res.redirect('/survey');});
+});
+
+
+// GET the Survey Read page
+router.get('/read/:id', (req, res, next) => {
+
+  //get id
+  let id = req.params.id;
+  //search info by id
+  survey.findById(id, (err, surveyRead) => {
+    res.render('survey/read', {title: 'Survey Read page', survey: surveyRead});
+});
+});
+
+
+// GET the Survey Result page
+router.get('/result/:id', (req, res, next) => {
+
+  //get id
+  let id = req.params.id;
+  //search info by id
+  survey.findById(id, (err, surveyResult) => {
+    res.render('survey/result', {title: 'Survey Result', survey: surveyResult});
+});
 });
 
 
