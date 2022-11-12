@@ -1,24 +1,20 @@
-<!--index.ejs   Ming Jie Wang   301188372   survey list page-->
 <%- include('../partials/header.ejs'); %>
 
     <!-- MAIN CONTENT -->
     <div class="container">
       <div class="row">
-        <div class="col-md-offset-1 col-md-10">
+        <div class="offset-md-1 col-md-11">
           <h3>Survey List </h3>
-          <!-- ------------------------ -->
-          <!-- FIX THE ADD BUTTON BELOW -->
-          <!-- ------------------------ -->
-          <a href="/survey/add" class="btn btn-primary"><i class="fa fa-plus"></i> Create a survey</a>
           <br>
           <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
                   <th>Title</th>
-                  <th class="text-center">Price</th>
                   <th class="text-center">Author</th>
                   <th class="text-center">Genre</th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
                   <th class="text-center"></th>
                   <th class="text-center"></th>
                 </tr>
@@ -28,29 +24,41 @@
                 <% for (let count = 0; count < survey.length; count++) { %>
                 <tr>
                   <td><%= survey[count].Title %></td>
-                  <td class="text-center">$<%= survey[count].Price %></td>
                   <td class="text-center"><%= survey[count].Author %></td>
                   <td class="text-center"><%= survey[count].Genre %></td>
-
+                  
                   <td class="text-center">
-                  <!-- update button -->
-                    <a href="/survey/update/<%= survey[count]._id %>" class="btn btn-primary btn-sm">
-                    <i class="fas fa-pencil-alt"></i> Update</a>
+                  <!-- Read button -->
+                    <a href="/survey/read/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Read</a>
                   </td>
 
+
                   <td class="text-center">
-                    <!-- delete button -->
-                    <a href="/survey/delete/<%= survey[count]._id %>" class="btn btn-danger btn-sm">
-                    <i class="fas fa-trash-alt"></i> Delete</a>
+                  <!-- Update button -->
+                    <a href="/survey/update/<%= survey[count]._id %>" class="btn btn-primary btn-sm"></i> Update</a>
                   </td>
+
+
+                  <td class="text-center">
+                  <!-- Results button -->
+                    <a href="/survey/result/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Result</a>
+                  </td>
+
+
+                  <td class="text-center">
+                    <!-- Delete button -->
+                    <a href="/survey/delete/<%= survey[count]._id %>" class="btn btn-danger btn-sm"> Delete</a>
+                  </td>
+
                 </tr>
                 <% } %>
               </tbody>
             </table>
           </div>
-           <div class="col-md-offset-1 col-md-10 text-center">
-            <ul class="pagination pagination-lg pager" id="myPager"></ul>
-          </div>
+
+
+          <!-- create button -->
+          <a href="/survey/create" class="btn btn-primary"><i class="fa fa-plus"></i> Create a survey</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs'); %>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-1 col-md-11">
+            <h3>Read Page</h3>
+            <br>
+
+            <!-- display description -->
+            <div class="form-group">
+                <label for="DescriptionTextField">Description</label>
+                <p><%= survey.Description %></p>
+            </div>
+
+            <!-- back button -->
+            <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
+
+
+        </div>
+      </div>
+    </div>
+
+<%- include('../partials/footer.ejs'); %>
+
+
