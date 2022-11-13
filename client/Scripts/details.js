@@ -23,18 +23,18 @@ creator.JSON = {
         {
           "type": "rating",
           "name": "nps_score",
-          "title": "On a scale of zero to ten, how likely are you to recommend our product to a friend or colleague?",
+          "title": "How much do you like comp 229?",
           "isRequired": true,
           "rateMin": 0,
           "rateMax": 10,
-          "minRateDescription": "(Most unlikely)",
-          "maxRateDescription": "(Most likely)"
+          "minRateDescription": "(I don't)",
+          "maxRateDescription": "(Love it)"
         }, {
           "type": "checkbox",
           "name": "promoter_features",
           "visible": false,
           "visibleIf": "{nps_score} >= 9",
-          "title": "Which features do you value the most?",
+          "title": "What do you like learning about?",
           "isRequired": true,
           "validators": [
             {
@@ -44,7 +44,7 @@ creator.JSON = {
             }
           ],
           "choices": [
-            "Performance", "Stability", "User Interface", "Complete Functionality"
+            "Performance", "EJS", "NodeJS", "React", "Angular"
           ],
           "showOtherItem": true,
           "otherText": "Other feature:",
@@ -54,13 +54,13 @@ creator.JSON = {
           "name": "passive_experience",
           "visible": false,
           "visibleIf": "{nps_score} > 6  and {nps_score} < 9",
-          "title": "What do you like about our product?"
+          "title": "What would you like to learn about?"
         }, {
           "type": "comment",
           "name": "disappointed_experience",
           "visible": false,
           "visibleIf": "{nps_score} notempty",
-          "title": "What do you miss or find disappointing in your experience with our products?"
+          "title": "What do you think is missing from the course?"
         }
       ]
     }
