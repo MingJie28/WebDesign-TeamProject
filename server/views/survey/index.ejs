@@ -12,20 +12,17 @@
                 <tr>
                   <th>Title</th>
                   <th class="text-center">Description</th>
-                  <th class="text-center"></th>
-                  <th class="text-center"></th>
-                  <th class="text-center"></th>
-                  <th class="text-center"></th>
+              
                 </tr>
                 </thead>
                 <tbody>
                 <!-- Template Row -->
                 <% for (let count = 0; count < survey.length; count++) { %>
                 <tr>
-                  <td><%= survey[count].Title %></td>
-                  <td class="text-center"><%= survey[count].Description %></td>
+                  <td contenteditable=true><%= survey[count].Title %></td>
+                  <td contenteditable=true class="text-center"><%= survey[count].Description %></td>
                   
-                  <td class="text-center">
+                  <td class="text-center" >
                   <!-- Read button -->
                     <a href="/survey/read/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Take Quiz</a>
                   </td>

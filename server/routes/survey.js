@@ -26,8 +26,11 @@ router.get('/', (req, res, next) => {
 //  GET the Survey Details page in order to create a new Survey
 router.get('/create', (req, res, next) => {
 
+
+
     //create object with info
     let newSurvey = survey({
+      
       "Title": "New Survey",
       "Description": "",
     });
