@@ -22,11 +22,102 @@
                 placeholder="Survey Genre" name="genre" value="<%= survey.Genre %>"  required>
               </div>
 
-              <div class="form-group">
-                <label for="DescriptionTextField">Description</label>
-                <input type="text" class="form-control" id="DescriptionTextField"
-                placeholder="Survey Description" name="description" value="<%= survey.Description %>"  required>
-              </div>
+               <!-- Main Content -->
+ <div class="container" id="container">
+  <!-- Configue Quiz -->
+  <div class="row" id="quizConfig">
+   <form class="col s12">
+     <div class="row">
+       <div class="input-field col m6 s12">
+         <input placeholder="1 - 100" id="qTotal" type="number" class="validate">
+         <label for="questions">Number of questions to create</label>
+       </div>
+       </div>
+   </form>
+   <!-- Create questions -->
+   <div class="col s6">
+     <a id="generateBtn" class="waves-effect waves-light btn-small">Generate Form</a>
+   </div>
+  </div>
+
+   <!-- Quiz Form -->
+  <div id="formContainer" class="row hide">
+   <form id="quizForm" class="col s12">
+     <!-- Title -->
+     <div class="row">
+       <div class="input-field col s12 m6">
+         <input id="title" placeholder="Enter the question" type="text" class="validate">
+         <label for="question_title">Question Title</label>
+       </div>
+     </div>
+     <!-- User Input 1 -->
+     <div class="row">
+       <div class="input-field col s12 m6">
+         <input id="input1" placeholder="Enter answer" type="text" class="validate">
+         <label>Option A</label>
+       </div>
+     </div>
+     <!-- User Input 2 -->
+     <div class="row">
+       <div class="input-field col s12 m6">
+         <input id="input2" placeholder="Enter answer" type="text" class="validate">
+         <label>Option B</label>
+       </div>
+     </div>
+
+     <!--User Input 3 -->
+     <div class="row">
+       <div class="input-field col s12 m6">
+         <input id="input3" placeholder="Enter answer" type="text" class="validate">
+         <label>Option C</label>
+       </div>
+     </div>
+
+     <!--Correct Answer-->
+     <div class="row">
+       <div class="input-field col s12 m6">
+         <input id="correctValue" placeholder="Enter the correct answer. A,B,C?" type="text" class="validate">
+         <label>Correct Answer</label>
+       </div>
+     </div>
+
+     <!-- Submit Button -->
+     <div id="submitBtn" class="col s6">
+       <a id="submit" class="waves-effect waves-light btn-small">Add to bank</a>
+     </div>
+   </form>
+ </div>
+
+ <!-- Quiz -->
+ <form id="quiz" class="hide" action="#">
+   <h5 id="qTitle"></h5>
+   <!-- Choice 1 -->
+   <p>
+     <label>
+       <input id="check1" class="with-gap" type="radio" name='choices' value="A"/>
+       <span id="option1"></span>
+     </label>
+   </p>
+   <!-- Choice 2 -->
+   <p>
+     <label>
+       <input id="check2" class="with-gap" type="radio" name='choices' value="B"/>
+       <span id="option2"></span>
+     </label>
+   </p>
+   <!-- Choice 3 -->
+   <p>
+     <label>
+       <input id="check3" class="with-gap" type="radio" name='choices' value="C"/>
+       <span id="option3"></span>
+     </label>
+   </p>
+   <a id="submitAnswer" class="waves-effect waves-light btn-small">Next Question</a>
+ </form>
+
+ </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="generate.js"></script>
 
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
