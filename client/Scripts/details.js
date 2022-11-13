@@ -17,7 +17,7 @@ creator.showState = true;
 
 
 //change "SaveLoadSurveyCreatorExample" to object id
-var survey_list = "Survey";
+var survey_list = "survey";
 
 
 

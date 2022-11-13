@@ -11,4 +11,4 @@ var creator = new survey.SurveyCreator
   </React.StrictMode>, document.getElementById("creatorElement"));
 
   //change "SaveLoadSurveyCreatorExample" to object id
-  creator.text = window.localStorage.getItem("SaveLoadSurveyCreatorExample") || JSON.stringify(defaultJSON);
+  creator.text = window.localStorage.getItem("survey") || JSON.stringify(defaultJSON);
