@@ -30,7 +30,6 @@ router.get('/create', (req, res, next) => {
     let newSurvey = survey({
       "Title": "New Survey",
       "Description": "",
-      "Author": "",
     });
     survey.create(newSurvey, (err, survey) =>{res.redirect('/survey');});
 });
@@ -60,7 +59,6 @@ router.post('/update/:id', (req, res, next) => {
       "_id": id,
       "Title": req.body.title,
       "Description": req.body.description,
-      "Author": req.body.author,
     });
     
     //update object

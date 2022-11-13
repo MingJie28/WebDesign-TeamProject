@@ -10,7 +10,15 @@ ReactDOM.render (<React.StrictMode>
 creator.isAutoSave = true;
 // Show state button here
 creator.showState = true;
+
+
+
+//change "SaveLoadSurveyCreatorExample" to object id
 var survey_list = "SaveLoadSurveyCreatorExample";
+
+
+
+
 // Setting this callback will make visible the "Save" button
 creator.saveSurveyFunc = function (saveNo, callback) {
   // save the survey JSON
@@ -28,46 +36,7 @@ var defaultJSON = {
       name: 'page1',
       elements: [
         {
-          "type": "rating",
-          "name": "nps_score",
-          "title": "How much do you like comp 229?",
-          "isRequired": true,
-          "rateMin": 0,
-          "rateMax": 10,
-          "minRateDescription": "(I don't)",
-          "maxRateDescription": "(Love it)"
-        }, {
-          "type": "checkbox",
-          "name": "promoter_features",
-          "visible": false,
-          "visibleIf": "{nps_score} >= 9",
-          "title": "What do you like learning about?",
-          "isRequired": true,
-          "validators": [
-            {
-              "type": "answercount",
-              "text": "Please select two features maximum.",
-              "maxCount": 2
-            }
-          ],
-          "choices": [
-            "Performance", "EJS", "NodeJS", "React", "Angular"
-          ],
-          "showOtherItem": true,
-          "otherText": "Other feature:",
-          "colCount": 2
-        }, {
-          "type": "comment",
-          "name": "passive_experience",
-          "visible": false,
-          "visibleIf": "{nps_score} > 6  and {nps_score} < 9",
-          "title": "What would you like to learn about?"
-        }, {
-          "type": "comment",
-          "name": "disappointed_experience",
-          "visible": false,
-          "visibleIf": "{nps_score} notempty",
-          "title": "What do you think is missing from the course?"
+          
         }
       ]
     }
