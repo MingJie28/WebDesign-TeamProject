@@ -1,9 +1,13 @@
+<!--301254146 301188372 details.ejs
+this will display the details page -->
+
 <%- include('../partials/header.ejs'); %>
 <!DOCTYPE html>
   <html lang="en">
     <head>
       <title>NPS Survey Question, Survey Creator Example</title>
 
+      <!-- details javascript will track this id-->
       <div class="form-group">
         <input type="text" class="form-control" id="id"
         placeholder="ID" name="theID" value="<%= survey._id %>"  required>

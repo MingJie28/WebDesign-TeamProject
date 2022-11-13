@@ -1,3 +1,8 @@
+//301254146 301188372 details.js
+//this javascript will open the update page depending on the database ids
+
+
+
 var options = {
     showLogicTab: true,
     haveCommercialLicense: true //Add this line
