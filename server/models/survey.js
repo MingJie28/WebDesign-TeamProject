@@ -5,7 +5,6 @@ let Survey = mongoose.Schema({
     Title: String,
     Description: String,
     Author: String,
-    Genre: String
 },
 {
   collection: "survey"

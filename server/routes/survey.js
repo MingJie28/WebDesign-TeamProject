@@ -26,25 +26,15 @@ router.get('/', (req, res, next) => {
 //  GET the Survey Details page in order to create a new Survey
 router.get('/create', (req, res, next) => {
 
-    //direct user to create page
-     res.render('survey/details', {
-      title: 'Create a Survey',
-      survey: ''
-    });
-});
-
-// POST process the Survey Details page and create a new Survey - CREATE
-router.post('/create', (req, res, next) => {
-
     //create object with info
     let newSurvey = survey({
-      "Title": req.body.title,
-      "Description": req.body.description,
-      "Author": req.body.author,
-      "Genre": req.body.genre
+      "Title": "New Survey",
+      "Description": "",
+      "Author": "",
     });
     survey.create(newSurvey, (err, survey) =>{res.redirect('/survey');});
 });
+
 
 // GET the Survey Details page in order to update an existing Survey
 router.get('/update/:id', (req, res, next) => {
@@ -71,7 +61,6 @@ router.post('/update/:id', (req, res, next) => {
       "Title": req.body.title,
       "Description": req.body.description,
       "Author": req.body.author,
-      "Genre": req.body.genre
     });
     
     //update object
