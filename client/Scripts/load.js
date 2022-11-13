@@ -1,9 +1,12 @@
 //301254146 301188372 load.js
 //this javascript will open the read page depending on the database ids
 
-const options = {
-  showLogicTab: true
+var options = {
+  showLogicTab: true,
+  haveCommercialLicense: true //Add this line
 };
+var creator = new SurveyCreator.SurveyCreator
+                  ("YourCreatorElement", options);
 var creator = new SurveyCreator.SurveyCreator(options);
 ReactDOM.render (<React.StrictMode>
   <SurveyCreator.SurveyCreatorComponent creator={creator}/>
