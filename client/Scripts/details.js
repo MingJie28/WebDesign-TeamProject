@@ -4,66 +4,37 @@ const options = {
 var creator = new SurveyCreator.SurveyCreator(options);
 ReactDOM.render (<React.StrictMode>
   <SurveyCreator.SurveyCreatorComponent creator={creator}/>
+  
 </React.StrictMode>, document.getElementById("creatorElement"));
-creator.JSON = {
-  "completedHtml": "<h3>Thank you for your feedback.</h3><h5>Your thoughts and ideas will help us to create a great product!</h5>",
-  "completedHtmlOnCondition": [
+// Automatically save survey definition on changing. Hide "Save" button
+creator.isAutoSave = true;
+// Show state button here
+creator.showState = true;
+var survey_list = "SaveLoadSurveyCreatorExample";
+// Setting this callback will make visible the "Save" button
+creator.saveSurveyFunc = function (saveNo, callback) {
+  // save the survey JSON
+  console.log(creator.text);
+  // You can store in your database JSON as text: creator.text  or as JSON: creator.JSON
+  window.localStorage.setItem(survey_list, creator.text);
+  // We assume that we can't get error on saving data in local storage
+  // Tells creator that changing (saveNo) saved successfully.
+  // Creator will update the status from Saving to saved
+  callback(saveNo, true);
+}
+var defaultJSON = {
+  pages: [
     {
-      "expression": "{nps_score} > 8",
-      "html": "<h3>Thank you for your feedback.</h3><h5>We glad that you love our product. Your ideas and suggestions will help us to make our product even better!</h5>"
-    }, {
-      "expression": "{nps_score} < 7",
-      "html": "<h3>Thank you for your feedback.</h3><h5> We are glad that you share with us your ideas.We highly value all suggestions from our customers. We do our best to improve the product and reach your expectation.</h5><br />"
-    }
-  ],
-  "pages": [
-    {
-      "name": "page1",
-      "elements": [
+      name: 'page1',
+      elements: [
         {
-          "type": "rating",
-          "name": "nps_score",
-          "title": "On a scale of zero to ten, how likely are you to recommend our product to a friend or colleague?",
-          "isRequired": true,
-          "rateMin": 0,
-          "rateMax": 10,
-          "minRateDescription": "(Most unlikely)",
-          "maxRateDescription": "(Most likely)"
-        }, {
-          "type": "checkbox",
-          "name": "promoter_features",
-          "visible": false,
-          "visibleIf": "{nps_score} >= 9",
-          "title": "Which features do you value the most?",
-          "isRequired": true,
-          "validators": [
-            {
-              "type": "answercount",
-              "text": "Please select two features maximum.",
-              "maxCount": 2
-            }
-          ],
-          "choices": [
-            "Performance", "Stability", "User Interface", "Complete Functionality"
-          ],
-          "showOtherItem": true,
-          "otherText": "Other feature:",
-          "colCount": 2
-        }, {
-          "type": "comment",
-          "name": "passive_experience",
-          "visible": false,
-          "visibleIf": "{nps_score} > 6  and {nps_score} < 9",
-          "title": "What do you like about our product?"
-        }, {
-          "type": "comment",
-          "name": "disappointed_experience",
-          "visible": false,
-          "visibleIf": "{nps_score} notempty",
-          "title": "What do you miss or find disappointing in your experience with our products?"
+          type: 'text',
+          name: "q1"
         }
       ]
     }
-  ],
-  "showQuestionNumbers": "off"
+  ]
 };
+creator.text = window.localStorage.getItem(survey_list) || JSON.stringify(defaultJSON);
+// If you get JSON from your database then you can use creator.JSON property
+// creator.JSON = yourJSON;

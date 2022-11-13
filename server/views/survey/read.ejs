@@ -1,25 +1,51 @@
 <%- include('../partials/header.ejs'); %>
 
-    <!-- MAIN CONTENT -->
-    <div class="container">
-      <div class="row">
-        <div class="offset-md-1 col-md-11">
-            <h3>Read Page</h3>
-            <br>
+		<!-- MAIN CONTENT -->
+		<div class="container">
+			<div class="row">
+				<div class="offset-md-1 col-md-11">
+						<h3>Read Page</h3>
+						<br>
 
-            <!-- display description -->
-            <div class="form-group">
-                <label for="DescriptionTextField">Description</label>
-                <p><%= survey.Description %></p>
-            </div>
+						<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<title>Load Survey from Service, Survey Creator Example</title>
+			<meta name="viewport" content="width=device-width"/>
+			<script src="https://unpkg.com/react@17.0.1/umd/react.production.min.js"></script>
+			<script src="https://unpkg.com/react-dom@17.0.1/umd/react-dom.production.min.js"></script>
+			<script src="https://unpkg.com/@babel/standalone@7.2.5/babel.min.js"></script>
+			<script src="https://unpkg.com/survey-core@1.9.57/survey.core.min.js"></script>
+			<script src="https://unpkg.com/survey-core@1.9.57/survey.i18n.min.js"></script>
+			<script src="https://unpkg.com/survey-react-ui@1.9.57/survey-react-ui.min.js"></script>
+			<link href="https://unpkg.com/survey-core@1.9.57/defaultV2.min.css" type="text/css" rel="stylesheet"/>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.10/ace.min.js" type="text/javascript" charset="utf-8"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.10/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+			<script src="https://unpkg.com/survey-creator-core@1.9.57/survey-creator-core.min.js"></script>
+			<link href="https://unpkg.com/survey-creator-core@1.9.57/survey-creator-core.min.css" type="text/css" rel="stylesheet"/>
+			<script src="https://unpkg.com/survey-creator-core@1.9.57/survey-creator-core.i18n.min.js"></script>
+			<script src="https://unpkg.com/survey-creator-react@1.9.57/survey-creator-react.min.js"></script>
+			<style>:root
+			{
+				--tab-min-height: 600px;
+			}
+		</style>
+		<link rel="stylesheet" href="./index.css"></head>
+	<body style="margin: 0">
+		<div id="surveyContainer">
+			<div id="creatorElement" style="height: 100vh;"></div>
+		</div>
+		<script type="text/babel" src="/Scripts/load.js"></script>
+	</body>
+</html>
 
-            <!-- back button -->
-            <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
+						<!-- back button -->
+						<a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
 
 
-        </div>
-      </div>
-    </div>
+				</div>
+			</div>
+		</div>
 
 <%- include('../partials/footer.ejs'); %>
 
