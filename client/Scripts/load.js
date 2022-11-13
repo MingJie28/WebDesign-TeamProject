@@ -1,7 +1,11 @@
-const options = {
-    showLogicTab: true
-  };
-  var creator = new SurveyCreator.SurveyCreator(options);
+const survey = require("../../server/models/survey");
+
+var options = {
+  showLogicTab: true,
+  haveCommercialLicense: true //Add this line
+};
+var creator = new survey.SurveyCreator
+                  ("YourCreatorElement", options);
   ReactDOM.render (<React.StrictMode>
     <SurveyCreator.SurveyCreatorComponent creator={creator}/>
   </React.StrictMode>, document.getElementById("creatorElement"));

@@ -1,6 +1,9 @@
-const options = {
-  showLogicTab: true
+var options = {
+    showLogicTab: true,
+    haveCommercialLicense: true //Add this line
 };
+var creator = new SurveyCreator.SurveyCreator
+                    ("YourCreatorElement", options);
 var creator = new SurveyCreator.SurveyCreator(options);
 ReactDOM.render (<React.StrictMode>
   <SurveyCreator.SurveyCreatorComponent creator={creator}/>
@@ -14,7 +17,7 @@ creator.showState = true;
 
 
 //change "SaveLoadSurveyCreatorExample" to object id
-var survey_list = "SaveLoadSurveyCreatorExample";
+var survey_list = "Survey";
 
 
 
