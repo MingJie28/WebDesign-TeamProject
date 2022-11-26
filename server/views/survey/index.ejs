@@ -22,32 +22,47 @@ this will display the survey list page -->
                 <!-- Template Row -->
                 <% for (let count = 0; count < survey.length; count++) { %>
                 <tr>
-                  <td contenteditable=true><%= survey[count].Title %></td>
-                  <td contenteditable=true class="text-center"><%= survey[count].Description %></td>
+                  <% if(typeof displayName == 'string' && displayName) { %>
+                    <td contenteditable=true><%= survey[count].Title %></td>
+                    <td contenteditable=true class="text-center"><%= survey[count].Description %></td>
                   
-                  <td class="text-center" >
-                  <!-- Read button -->
-                    <a href="/survey/read/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Take Quiz</a>
-                  </td>
+                    <td class="text-center" >
+                    <!-- Read button -->
+                      <a href="/survey/read/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Take Quiz</a>
+                    </td>
 
 
-                  <td class="text-center">
-                  <!-- Update button -->
-                    <a href="/survey/update/<%= survey[count]._id %>" class="btn btn-primary btn-sm"></i> Update</a>
-                  </td>
+                    <td class="text-center">
+                    <!-- Update button -->
+                      <a href="/survey/update/<%= survey[count]._id %>" class="btn btn-primary btn-sm"></i> Update</a>
+                    </td>
 
 
-                  <td class="text-center">
-                  <!-- Results button -->
-                    <a href="/survey/result/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Result</a>
-                  </td>
+                    <td class="text-center">
+                    <!-- Results button -->
+                      <a href="/survey/result/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Result</a>
+                    </td>
 
 
-                  <td class="text-center">
-                    <!-- Delete button -->
-                    <a href="/survey/delete/<%= survey[count]._id %>" class="btn btn-danger btn-sm"> Delete</a>
-                  </td>
+                    <td class="text-center">
+                      <!-- Delete button -->
+                      <a href="/survey/delete/<%= survey[count]._id %>" class="btn btn-danger btn-sm"> Delete</a>
+                    </td>
+                    <% } else { %>
 
+                    <td contenteditable=true><%= survey[count].Title %></td>
+                    <td contenteditable=true class="text-center"><%= survey[count].Description %></td>
+                  
+                    <td class="text-center" >
+                    <!-- Read button -->
+                      <a href="/survey/read/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Take Quiz</a>
+                    </td>
+
+                    <td class="text-center">
+                    <!-- Results button -->
+                      <a href="/survey/result/<%= survey[count]._id %>" class="btn btn-primary btn-sm">Result</a>
+                    </td>
+                  <% } %>
                 </tr>
                 <% } %>
               </tbody>
@@ -56,7 +71,9 @@ this will display the survey list page -->
 
 
           <!-- create button -->
-          <a href="/survey/create" class="btn btn-primary"><i class="fa fa-plus"></i> Create a survey</a>
+          <% if(typeof displayName == 'string' && displayName) { %>
+            <a href="/survey/create" class="btn btn-primary"><i class="fa fa-plus"></i> Create a survey</a>
+          <% } %>
         </div>
       </div>
     </div>

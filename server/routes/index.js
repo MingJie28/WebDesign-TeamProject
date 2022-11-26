@@ -2,16 +2,22 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
+let passport = require('passport');
 
+// enable jwt
+let jwt = require('jsonwebtoken');
+let DB = require('../config/db');
 
-// define the game model
-let survey = require('../models/survey');
+// create the User Model instance
+let userModel = require('../models/user');
+let User = userModel.User;
 
 /* GET home page. wildcard */
 router.get('/', (req, res, next) => {
   res.render('content/index', {
     title: 'Home',
-    survey: ''
+    survey: '',
+    displayName: req.user ? req.user.displayName : ''
    });
 });
 /* POST Route for processing the Login page */
@@ -48,14 +54,14 @@ router.post('/login', (req, res, next) => {
               expiresIn: 604800 // 1 week
           });
           
-          return res.json({success: true, msg: 'User Logged in Successfully!', user: {
-              id: user._id,
-              displayName: user.displayName,
-              username: user.username,
-              email: user.email
-          }, token: authToken});
+        //   return res.json({success: true, msg: 'User Logged in Successfully!', user: {
+        //       id: user._id,
+        //       displayName: user.displayName,
+        //       username: user.username,
+        //       email: user.email
+        //   }, token: authToken});
 
-          //return res.redirect('/book-list');
+          return res.redirect('/survey');
       });
   })(req, res, next);
 });
@@ -70,7 +76,7 @@ router.post('/register', (req, res, next) => {
   // instantiate a user object
   let newUser = new User({
       username: req.body.username,
-      //password: req.body.password
+      password: req.body.password,
       email: req.body.email,
       displayName: req.body.displayName
   });
@@ -100,13 +106,9 @@ router.post('/register', (req, res, next) => {
 
           // redirect the user and authenticate them
 
-          return res.json({success: true, msg: 'User Registered Successfully!'});
-
-          /*
           return passport.authenticate('local')(req, res, () => {
-              res.redirect('/book-list')
+              res.redirect('/survey')
           });
-          */
       }
   });
 });
@@ -115,7 +117,7 @@ router.post('/register', (req, res, next) => {
 /* GET to perform UserLogout */
 router.get('/logout', (req, res, next) => {
   req.logout();
-  //res.redirect('/');
+  res.redirect('/');
   res.json({success: true, msg: 'User Successfully Logged out!'});
 });
 

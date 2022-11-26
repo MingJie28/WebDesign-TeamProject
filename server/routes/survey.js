@@ -19,7 +19,8 @@ router.get('/', (req, res, next) => {
     else {
       res.render('survey/index', {
         title: 'survey',
-        survey: survey
+        survey: survey,
+        displayName: req.user ? req.user.displayName : ''
       });
     }
   });
@@ -36,6 +37,7 @@ router.get('/create', (req, res, next) => {
       
       "Title": "New Survey",
       "Description": "",
+      displayName: req.user ? req.user.displayName : ''
     });
     survey.create(newSurvey, (err, survey) =>{res.redirect('/survey');});
 });
@@ -48,7 +50,8 @@ router.get('/update/:id', (req, res, next) => {
     let id = req.params.id;
     //search info by id
     survey.findById(id, (err, surveyToupdate) => {
-      res.render('survey/details', {title: 'Update Survey', survey: surveyToupdate});
+      res.render('survey/details', {title: 'Update Survey', survey: surveyToupdate,
+      displayName: req.user ? req.user.displayName : ''});
   });
 });
 
@@ -90,7 +93,8 @@ router.get('/read/:id', (req, res, next) => {
   let id = req.params.id;
   //search info by id
   survey.findById(id, (err, surveyRead) => {
-    res.render('survey/read', {title: 'Survey Read page', survey: surveyRead});
+    res.render('survey/read', {title: 'Survey Read page', survey: surveyRead,
+    displayName: req.user ? req.user.displayName : ''});
 });
 });
 
@@ -102,7 +106,8 @@ router.get('/result/:id', (req, res, next) => {
   let id = req.params.id;
   //search info by id
   survey.findById(id, (err, surveyResult) => {
-    res.render('survey/result', {title: 'Survey Result', survey: surveyResult});
+    res.render('survey/result', {title: 'Survey Result', survey: surveyResult,
+    displayName: req.user ? req.user.displayName : ''});
 });
 });
 
