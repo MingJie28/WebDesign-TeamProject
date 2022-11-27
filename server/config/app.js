@@ -50,6 +50,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 app.use(cors());
+app.use(express.static(__dirname + '/public'))
 
 //setup express session
 app.use(session({

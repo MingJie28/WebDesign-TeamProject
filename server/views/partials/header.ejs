@@ -42,12 +42,12 @@
           <% } %>
 
         <% if(typeof displayName == 'string' && displayName) { %>
-          <h5><li class="navbar-text"><i class="fas fa-lg fa-user nav_colour nav_colour"> Welcome, <%= displayName %></i></li></h5>
+          <li class="navbar-text"><i class="fa fa-user fa-lg" aria-hidden="true"></i> Welcome, <%= displayName %></li>
           <li class="nav-item"><a href="/logout" class="nav-link nav_colour">
-            <h4><i class="fas fa-lg fa-sign-out-alt nav_colour"> Logout</i></a></li></h4>
+            <li><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout</a></li>
         <% } else { %>
           <li class="nav-item"><a href="/login" class="nav-link nav_colour">
-            <h4><i class="fas fa-lg fa-sign-in-alt nav_colour"> Login</i></a></li></h4>
+            <li><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Login</a></li>
         <% } %>
   
 
